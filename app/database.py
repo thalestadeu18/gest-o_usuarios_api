@@ -1,14 +1,27 @@
+# Arquivo: app/database.py
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-DATABASE_URL = "sqlite:///./meubanco.db"
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
-Base = declarative_base()
-def get_db():
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-db = SessionLocal()
-try:
-yield db
-finally:
-db.close()
+# SEUS DADOS
+DB_USER = "THALESTADEU18_SCHEMA_T8VNF"
+DB_PASSWORD = "<SUA_SENHA_AQUI>"  # <--- COLOCAR SUA SENHA AQUI
+DB_HOST = "db.freesql.com"
+DB_PORT = "1521"
+DB_SERVICE = "23ai_34ui2"
+
+DATABASE_URL = f"oracle+oracledb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/?service_name={DB_SERVICE}"
+
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+# O ERRO ESTAVA AQUI EMBAIXO:
+def get_db():
+    # ATENÇÃO: Tem que ter 4 espaços antes de "db ="
+    db = SessionLocal()
+    try:
+        # 4 espaços aqui também
+        yield db
+    finally:
+        # 4 espaços aqui também
+        db.close()
