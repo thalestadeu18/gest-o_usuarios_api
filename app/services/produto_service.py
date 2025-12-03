@@ -52,3 +52,8 @@ def atualizar_produto(db: Session, produto_id: int, nome: str = None, valor: flo
     db.commit()
     db.refresh(produto)
     return produto
+
+# Wesley: função para buscar o produto pelo id
+def buscar_produto_por_id(db: Session, produto_id: int):
+    # Retorna o produto ou None se não existir
+    return db.query(Produto).filter(Produto.id == produto_id).first()
