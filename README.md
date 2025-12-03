@@ -97,7 +97,7 @@ Semelhantes às rotas de produtos.
 👥 Participantes
 Daniel Duarte-01847432
 Wesley Gonçalves-01849581
-Thalles Tadeu-01857106
+Thales Tadeu-01857106
 Julio César-01847484
 
 Crie uma branch:
