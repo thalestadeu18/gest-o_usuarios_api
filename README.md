@@ -37,7 +37,7 @@ PostgreSQL
 
 Pydantic
 
-Alembic (opcional)
+Alembic 
 
 🚀 Como Rodar o Projeto
 1️⃣ Criar o ambiente virtual
@@ -82,7 +82,7 @@ PUT /produtos/{id} – atualizar
 
 DELETE /produtos/{id} – remover
 
-📍 Categorias (se existir)
+📍 Categorias 
 
 Semelhantes às rotas de produtos.
 
