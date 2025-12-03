@@ -57,3 +57,23 @@ def atualizar_produto(db: Session, produto_id: int, nome: str = None, valor: flo
 def buscar_produto_por_id(db: Session, produto_id: int):
     # Retorna o produto ou None se não existir
     return db.query(Produto).filter(Produto.id == produto_id).first()
+
+# Julio: Função para atualizar o estoque do banco de dados
+def atualizar_estoque(db: Session, produto_id: int, quantidade_vendida: int):
+    produto = db.query(Produto).filter(Produto.id == produto_id).first()
+    
+    if not produto:
+        raise ValueError("Produto não encontrado")
+    
+    if produto.quantidade < quantidade_vendida:
+        raise ValueError("Estoque insuficiente")
+
+    produto.quantidade -= quantidade_vendida
+    
+    db.commit()
+    db.refresh(produto)
+    return produto
+
+# Julio: Função para buscar produtos pelo nome
+def buscar_produtos_por_nome(db: Session, termo_busca: str):
+    return db.query(Produto).filter(Produto.nome.ilike(f"%{termo_busca}%")).all()
