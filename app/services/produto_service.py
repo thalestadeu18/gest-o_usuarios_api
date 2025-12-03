@@ -31,4 +31,9 @@ def deletar_produto(db, produto_id: int):
     db.delete(produto)
     db.commit()
     return True
+    
+# Wesley: função para buscar o produto pelo id
+def buscar_produto_por_id(db: Session, produto_id: int):
+    # Retorna o produto ou None se não existir
+    return db.query(Produto).filter(Produto.id == produto_id).first()
 
