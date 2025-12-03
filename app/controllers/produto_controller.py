@@ -14,11 +14,9 @@ def criar_produto(
     db: Session = Depends(get_db)
 ):
     try:
-        # Chama o serviço passando todos os dados
         produto = produto_service.criar_produto(db, nome, valor, descricao, quantidade)
         return produto
     except ValueError as e:
-        # Tratamento de exceção com status 400 (Bad Request)
         raise HTTPException(status_code=400, detail=str(e))
 
 @router.get("/")

@@ -1,17 +1,13 @@
 from sqlalchemy.orm import Session
 from models.produto_model import Produto
 
-# Adicionamos descricao e quantidade nos parâmetros
 def criar_produto(db: Session, nome: str, valor: float, descricao: str, quantidade: int):
 
-    # Regra de negócio: Verificar duplicidade
     produto_existente = db.query(Produto).filter(Produto.nome == nome).first()
 
     if produto_existente:
-        # Tratamento de Exceção exigido no PDF
         raise ValueError("Produto já cadastrado no estoque!")
 
-    # Criar produto com os novos campos
     novo_produto = Produto(
         nome=nome, 
         valor=valor, 
