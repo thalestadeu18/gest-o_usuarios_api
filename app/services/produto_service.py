@@ -32,8 +32,23 @@ def deletar_produto(db, produto_id: int):
     db.commit()
     return True
     
-# Wesley: função para buscar o produto pelo id
-def buscar_produto_por_id(db: Session, produto_id: int):
-    # Retorna o produto ou None se não existir
-    return db.query(Produto).filter(Produto.id == produto_id).first()
+# Wesley: Função para atualizar o produto 
+def atualizar_produto(db: Session, produto_id: int, nome: str = None, valor: float = None, descricao: str = None):
+    # Busca o produto
+    produto = db.query(Produto).filter(Produto.id == produto_id).first()
+    
+    if not produto:
+        return None # Ou apresentar erro
 
+    # Atualiza somente os campos que foram enviados
+    if nome:
+        produto.nome = nome
+    if valor:
+        produto.valor = valor
+    if descricao:
+        produto.descricao = descricao
+
+    # Salva as modificações
+    db.commit()
+    db.refresh(produto)
+    return produto
