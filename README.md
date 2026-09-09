@@ -1,16 +1,26 @@
-📦 Gestão de Produtos API
+# Gestão de Produtos API
 
-API desenvolvida em FastAPI para gerenciar produtos, categorias e operações de CRUD com integração a banco de dados PostgreSQL.
+API REST desenvolvida em **Python** com **FastAPI** e **PostgreSQL** para gerenciamento de produtos e categorias.
 
+## Sobre o projeto
 
-📘 Sobre o Projeto
+Projeto acadêmico desenvolvido em equipe com foco na construção de uma API organizada por camadas, operações CRUD, validação de dados e integração com banco de dados relacional.
 
-Este projeto é uma API moderna construída com FastAPI, focada em simplicidade, performance e organização.
-O objetivo é permitir o cadastro, listagem, atualização e remoção de produtos de forma rápida e segura.
+## Tecnologias
 
-🗂️ Estrutura do Projeto
+- Python 3.10+
+- FastAPI
+- Uvicorn
+- SQLAlchemy
+- PostgreSQL
+- Pydantic
+- Alembic
+
+## Estrutura
+
+```text
 gestao_produtos_api/
-│── app/
+├── app/
 │   ├── main.py
 │   ├── models.py
 │   ├── schemas.py
@@ -19,104 +29,78 @@ gestao_produtos_api/
 │   │   ├── produtos.py
 │   │   └── categorias.py
 │   └── __init__.py
-│── requirements.txt
-│── README.md
-│── venv/
+├── requirements.txt
+└── README.md
+```
 
-🛠️ Tecnologias Utilizadas
+## Funcionalidades
 
-Python 3.10+
+- CRUD de produtos
+- CRUD de categorias
+- Validação de dados com Pydantic
+- Persistência em PostgreSQL
+- Mapeamento de dados com SQLAlchemy
+- Documentação automática da API com Swagger e ReDoc
 
-FastAPI
+## Como executar
 
-Uvicorn
+### 1. Criar o ambiente virtual
 
-SQLAlchemy
-
-PostgreSQL
-
-Pydantic
-
-Alembic 
-
-🚀 Como Rodar o Projeto
-1️⃣ Criar o ambiente virtual
+```bash
 python -m venv venv
+```
 
+No Windows (PowerShell):
 
-Ativar no Git Bash:
+```powershell
+.\venv\Scripts\Activate.ps1
+```
 
-source venv/Scripts/activate
+### 2. Instalar as dependências
 
-2️⃣ Instalar dependências
+```bash
 pip install -r requirements.txt
+```
 
-3️⃣ Configurar o banco de dados
+### 3. Configurar o banco de dados
 
-Edite o arquivo .env com suas credenciais:
+Crie um arquivo `.env` com a URL de conexão do PostgreSQL, conforme a configuração utilizada pelo projeto. Não publique credenciais reais no repositório.
 
+Exemplo:
+
+```env
 DATABASE_URL=postgresql://usuario:senha@localhost:5432/nomedb
+```
 
-4️⃣ Rodar o servidor
-uvicorn main:app --reload
+### 4. Iniciar a API
 
+```bash
+uvicorn app.main:app --reload
+```
 
-Acesse no navegador:
+A API ficará disponível em `http://127.0.0.1:8000`.
 
-👉 http://127.0.0.1:8000
+Documentação:
 
-👉 Documentação automática Swagger: http://127.0.0.1:8000/docs
+- Swagger: `http://127.0.0.1:8000/docs`
+- ReDoc: `http://127.0.0.1:8000/redoc`
 
-👉 Documentação Redoc: http://127.0.0.1:8000/redoc
+## Principais endpoints
 
-📮 Rotas Principais
-📍 Produtos
+### Produtos
 
-GET /produtos – listar produtos
+| Método | Endpoint | Descrição |
+|---|---|---|
+| GET | `/produtos` | Lista produtos |
+| POST | `/produtos` | Cria produto |
+| GET | `/produtos/{id}` | Busca produto por ID |
+| PUT | `/produtos/{id}` | Atualiza produto |
+| DELETE | `/produtos/{id}` | Remove produto |
 
-POST /produtos – criar produto
+### Categorias
 
-GET /produtos/{id} – buscar produto
+Possuem operações equivalentes para cadastro, consulta, atualização e remoção.
 
-PUT /produtos/{id} – atualizar
+## Projeto acadêmico
 
-DELETE /produtos/{id} – remover
-
-📍 Categorias 
-
-Semelhantes às rotas de produtos.
-
-📌 Funcionalidades
-
-✔ CRUD completo
-✔ Documentação automática
-✔ Validação de dados com Pydantic
-✔ Integração com PostgreSQL
-✔ Estrutura organizada em módulos
-
-👥 Participantes
-Daniel Duarte-01847432
-Wesley Gonçalves-01849581
-Thales Tadeu-01857106
-Julio César-01847484
-
-Crie uma branch:
-
-git checkout -b minha-feature
-
-
-Commit:
-
-git commit -m "Minha nova feature"
-
-
-Push:
-
-git push origin minha-feature
-
-
-Abra um Pull Request no GitHub
-
-📄 Licença
-
-Este projeto está sob licença MIT — fique à vontade para usar e modificar.
+Desenvolvido em equipe durante a formação em Análise e Desenvolvimento de Sistemas.
